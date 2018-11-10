@@ -1,3 +1,7 @@
+CREATE EXTENSION pgcrypto; --Allows PostgreSQL to understand UUIDs. Only have to create the extension once for a database.
+
+DROP TABLE employee;
+
 CREATE TABLE employee (
   id uuid NOT NULL DEFAULT gen_random_uuid(),
   employeeid character varying(32) NOT NULL DEFAULT(''),
