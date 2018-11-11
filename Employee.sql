@@ -4,7 +4,7 @@ DROP TABLE employee;
 
 CREATE TABLE employee (
   id uuid NOT NULL DEFAULT gen_random_uuid(),
-  employeeid character varying(32) NOT NULL DEFAULT(''),
+  employeeUsername character varying(32) NOT NULL DEFAULT(''),
   firstname character varying(128) NOT NULL DEFAULT(''),
   lastname character varying(128) NOT NULL DEFAULT(''),
   password character varying(512) NOT NULL DEFAULT(''),
