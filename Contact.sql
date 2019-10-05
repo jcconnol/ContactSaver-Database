@@ -1,10 +1,8 @@
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-
 DROP TABLE IF EXISTS "contact";
 
 
 CREATE TABLE contact (
-  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  id character varying(37) NOT NULL DEFAULT(''),
   name character varying(99),  --Stored in the edu.uark.models.entities:ContactEntity#userid.
   phonenumber NUMERIC(50, 0), --Stored in the edu.uark.models.entities:ContactEntity#phonenumber property. See also the named constant defined in edu.uark.models.entities.fieldnames:ProductFieldNames that is used for Java <-> SQL mappings.
   CONSTRAINT contact_pkey PRIMARY KEY (phonenumber)
@@ -14,9 +12,9 @@ CREATE TABLE contact (
 
 --DROP INDEX ix_contact_phonenumber;
 
-CREATE INDEX IF NOT EXISTS ix_contact_phonenumber
+CREATE INDEX IF NOT EXISTS ix_contact_id
   ON contact
-  USING btree(phonenumber);
+  USING btree(id);
 
 INSERT INTO contact (id, name, phonenumber)
 VALUES ('d842f4fc-7cdf-48bd-96e7-35d1e55f6dcd', 'test', 8675309),
