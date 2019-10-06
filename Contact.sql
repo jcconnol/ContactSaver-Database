@@ -7,7 +7,7 @@ CREATE TABLE contact (
   id uuid NOT NULL DEFAULT gen_random_uuid(),
   ownerid character varying(37) NOT NULL DEFAULT(''),
   name character varying(99),  --Stored in the edu.uark.models.entities:ContactEntity#userid.
-  phonenumber NUMERIC(50, 0), --Stored in the edu.uark.models.entities:ContactEntity#phonenumber property. See also the named constant defined in edu.uark.models.entities.fieldnames:ProductFieldNames that is used for Java <-> SQL mappings.
+  phonenumber int NOT NULL DEFAULT(0), --Stored in the edu.uark.models.entities:ContactEntity#phonenumber property. See also the named constant defined in edu.uark.models.entities.fieldnames:ProductFieldNames that is used for Java <-> SQL mappings.
   createdon timestamp without time zone NOT NULL DEFAULT now(),
   CONSTRAINT contact_pkey PRIMARY KEY (id)
 ) WITH (
@@ -18,7 +18,7 @@ CREATE TABLE contact (
 
 CREATE INDEX IF NOT EXISTS ix_contact_ownerid
   ON contact
-  USING btree(ownerid);
+  USING btreE(ownerid);
 
 INSERT INTO contact (ownerid, name, phonenumber)
 VALUES ('d842f4fc-7cdf-48bd-96e7-35d1e55f6dcd', 'test', 8675309),
